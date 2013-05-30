@@ -10,8 +10,8 @@ use gsearch;
 my ($query, $lang, $num) = @ARGV;
 my $ret = search($query, $lang, $num);
 for my $rank (keys %{$ret}) {
-    print 'title: ', $ret->{$rank}->{'title'},"\n";
-    print 'url: ', $ret->{$rank}->{'url'},"\n";
-    print 'brief: ', $ret->{$rank}->{'brief'},"\n\n";
+    print "$rank title: ", $ret->{$rank}->{'title'},"\n";
+    print "$rank url: ", $ret->{$rank}->{'url'},"\n";
+    print "$rank brief: ", $ret->{$rank}->{'brief'},"\n\n";
 }
 
