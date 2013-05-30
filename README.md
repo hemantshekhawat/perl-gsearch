@@ -18,5 +18,7 @@ A simple Perl crawler for Google search results.
 
 ###Examples: <br />
 1. cd examples/ <br />
-2. perl t.pl <your query> <language> <result num> <br />
+2. perl t.pl [your query] [language] [result num] <br />
 
+
+###Future: Maybe performance?<br />
