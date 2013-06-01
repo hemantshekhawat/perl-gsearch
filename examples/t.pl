@@ -8,10 +8,12 @@ use gsearch;
 
 @ARGV == 3 or die;
 my ($query, $lang, $num) = @ARGV;
-my $ret = search($query, $lang, $num);
-for my $rank (keys %{$ret}) {
-    print "$rank title: ", $ret->{$rank}->{'title'},"\n";
-    print "$rank url: ", $ret->{$rank}->{'url'},"\n";
-    print "$rank brief: ", $ret->{$rank}->{'brief'},"\n\n";
-}
+#my $ret = search($query, $lang, $num);
+#for my $rank (keys %{$ret}) {
+#    print "$rank title: ", $ret->{$rank}->{'title'},"\n";
+#    print "$rank url: ", $ret->{$rank}->{'url'},"\n";
+#    print "$rank brief: ", $ret->{$rank}->{'brief'},"\n\n";
+#}
+my $json_str = search_json($query, $lang, $num, 'utf8');
 
+print $json_str, "\n";

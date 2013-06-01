@@ -8,6 +8,8 @@ use HTTP::Response;
 use URI::Escape;
 use Mojo::DOM;
 use Mojo::DOM::CSS;
+use JSON;
+use Encode;
 
 
 my $base_url = "https://www.google.com.hk";
@@ -87,7 +89,9 @@ sub search {
             my $res = $ua->request($req);
             print STDERR $res->status_line, "\n";
             if ($res->is_success) {
-                %rets = parse($res->content); 
+                print $res->content_type,"\n";
+                print $res->content_charset,"\n";
+                %rets = parse($res->decoded_content); 
                 #for my $rank (keys %rets) {
                 #    print "title=$rets{$rank}{'title'}\n";
                 #}
@@ -103,5 +107,10 @@ sub search {
     return \%rets;
 }
 
+sub search_json {
+    my $charset = pop @_;
+    my $hash_ref = search(@_);
+    return encode($charset, to_json($hash_ref));
+}
 #search(@ARGV);
 1;
